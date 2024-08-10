@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import InputContactForm from "../../components/InputContactForm";
-import ContactItem from "../../components/ContactItem";
-import "../../assets/styles/style.css";
-import { getAllContactsData } from "../../services";
+import { useEffect, useState } from 'react'
+import InputContactForm from '../../components/InputContactForm'
+import ContactItem from '../../components/ContactItem'
+import '../../assets/styles/style.css'
+import { getAllContactsData } from '../../services'
 
 const ContactManager = () => {
-  const [contactsData, setContactsData] = useState([]);
-  const [selectedContact, setSelectedContact] = useState({});
+  const [contactsData, setContactsData] = useState([])
+  const [selectedContact, setSelectedContact] = useState({})
 
   const handleGetContactsData = async () => {
-    const res = await getAllContactsData();
-    setContactsData(res?.data?.data);
-  };
+    const res = await getAllContactsData()
+    setContactsData(res?.data?.data)
+  }
 
   const handleSetSelectedContact = (id, name, phone, email) => {
     setSelectedContact({
@@ -19,18 +19,21 @@ const ContactManager = () => {
       fullName: name,
       phoneNumber: phone,
       email,
-    });
-  };
+    })
+  }
 
   useEffect(() => {
-    handleGetContactsData();
-  }, []);
+    handleGetContactsData()
+  }, [])
 
   return (
     <div className="home">
       <div className="container">
         {/* TODO: Tambahkan selectedContact sebagai props pada komponen InputContactForm */}
-        <InputContactForm  handleGetContacts={{handleGetContactsData, selectedContact}} />
+        <InputContactForm
+          handleGetContacts={handleGetContactsData}
+          selectedContact={selectedContact}
+        />
         <div className="contact-list__container">
           <>
             {contactsData && contactsData?.length > 0
@@ -45,12 +48,12 @@ const ContactManager = () => {
                     handleSetSelected={handleSetSelectedContact}
                   />
                 ))
-              : ""}
+              : ''}
           </>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContactManager;
+export default ContactManager

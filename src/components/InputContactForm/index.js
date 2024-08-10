@@ -19,6 +19,7 @@ const InputContactForm = (props) => {
     if(id > 0) {
 
       await updateContact({
+        id,
         full_name: fullName,
         phone_number: phoneNumber,
         email,

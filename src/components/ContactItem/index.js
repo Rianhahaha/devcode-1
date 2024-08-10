@@ -21,10 +21,9 @@ const ContactItem = (props) => {
     await deleteContact(id);
     handleGetContacts();
   }
-  // const handleEditContact = async (id ,updatedContact) => {
-  //   await updateContact(id ,updatedContact);
-  //   handleSetSelected(null);
-  // }
+  const handleEditContact = async () => {
+    handleSetSelected(id, full_name, phone_number, email);
+  }
 
   return (
     <div data-cy="item-card" className="contact-item__wrapper">
@@ -33,7 +32,7 @@ const ContactItem = (props) => {
           {full_name}
         </p>
         <div className="contact-item__button-wrapper">
-          <button data-cy="btn-edit" class="contact-item__button contact-item__edit-button " onClick={handleSetSelected(id)}> Edit Contact</button>
+          <button data-cy="btn-edit" class="contact-item__button contact-item__edit-button " onClick={handleEditContact}> Edit Contact</button>
           <button data-cy="btn-delete" class="contact-item__button contact-item__delete-button " onClick={handleDeleteContact}> Delete Contact</button>
         </div>
       </div>

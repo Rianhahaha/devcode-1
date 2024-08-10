@@ -23,8 +23,8 @@ export async function deleteContact(id) {
     });
   }
 
-  export async function updateContact(id, payload) {
-    return await axios.put(`${BASE_URL}/contacts/${id}`, payload).catch((error) => {
-      return error;
-    });
+  export async function updateContact(payload) {
+    return await axios.put(`${BASE_URL}/contacts/${payload.id}`, payload).catch((error) => {
+        return error;
+      });
   }
